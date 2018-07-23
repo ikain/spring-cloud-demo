@@ -12,5 +12,6 @@
         <module>common-cloud-server</module>
         <module>common-cloud-consumer</module>
         <module>common-cloud-provider</module>
+        <module>common-cloud-router</module>
     </modules>
 </project>

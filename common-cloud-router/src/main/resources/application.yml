@@ -7,13 +7,14 @@ eureka:
     lease-expiration-duration-in-seconds: 2 # 超过2s,未发送心跳，则剔除服务
 
 server:
-  port: 8082
+  port: 8080
 
 spring:
   application:
-    name: common-cloud-provider
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: user-db
+    name: common-cloud-router
+
+zuul:
+  routes:
+    api-consumer:
+      path: /**
+      serviceId: common-cloud-consumer

@@ -2,8 +2,13 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 1 # 每间隔1s，向服务端发送一次心跳
+    lease-expiration-duration-in-seconds: 2 # 超过2s,未发送心跳，则剔除服务
+
 server:
   port: 8081
+
 spring:
   application:
     name: common-cloud-consumer

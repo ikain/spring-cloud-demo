@@ -2,11 +2,15 @@ server:
   port: 8761
 
 eureka:
+  environment: dev
+  server:
+    eviction-interval-timer-in-ms: 10000 # 设置清理无效节点的时间间隔，默认60000，即是60s
+    enable-self-preservation: false   # 测试时关闭自我保护机制，保证不可用服务及时踢出
   instance:
     hostname: localhost
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: false # 是否注册到eureka
+    fetchRegistry: false # 是否从eureka获取注册信息
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
