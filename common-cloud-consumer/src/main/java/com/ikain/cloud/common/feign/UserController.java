@@ -3,12 +3,9 @@ package com.ikain.cloud.common.feign;
 import com.alibaba.fastjson.JSON;
 import com.ikain.cloud.common.bean.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,32 +28,32 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<UserEntity> findUsers(@RequestParam(value = "name", required = false) String name,
                                       @RequestParam(value = "sex", required = false) Integer sex) {
         return userService.findUsers(name, sex);
     }
 
-    @GetMapping(value = "/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserEntity getUserById(@PathVariable(value = "id") String id) {
         return userService.getUserById(id);
     }
 
-    @PostMapping()
+    @RequestMapping(method = RequestMethod.POST)
     public UserEntity saveUser(@RequestParam String data) {
         UserEntity user = JSON.parseObject(data, UserEntity.class);
         userService.saveUser(user);
         return user;
     }
 
-    @PutMapping()
+    @RequestMapping(method = RequestMethod.PUT)
     public UserEntity updateUser(@RequestParam String data){
         UserEntity user = JSON.parseObject(data, UserEntity.class);
         userService.updateUser(user);
         return user;
     }
 
-    @DeleteMapping(value = "/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Map<String, String> deleteUser(@PathVariable String id){
         userService.deleteUser(id);
         Map<String, String> map = new HashMap<>();
