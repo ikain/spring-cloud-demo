@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by FengKai on 2018/6/19.
- * 用户管理业务控制
+ * Feign + Hystrix 实现
  */
 @RestController
 @RequestMapping(value = "/user")

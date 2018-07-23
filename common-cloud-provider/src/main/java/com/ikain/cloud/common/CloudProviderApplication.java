@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Import;
 
 @EnableEurekaClient
-@SpringBootApplication(scanBasePackages = "com.ikain.cloud.common.feign")
+@SpringBootApplication(scanBasePackages = {"com.ikain.cloud.common.feign", "com.ikain.cloud.common.ribbon"})
 @Import({MongoConfig.class})
 public class CloudProviderApplication {
 

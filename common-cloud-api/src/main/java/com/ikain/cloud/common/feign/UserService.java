@@ -14,8 +14,8 @@ import java.util.List;
 
 /**
  * Created by FengKai on 2018/6/19.
+ * Feign + Hystrix 实现
  */
-
 @FeignClient(value = "common-cloud-provider/user", fallback = UserServiceFallBack.class, configuration = FeignConfig.class)
 public interface UserService {
 
